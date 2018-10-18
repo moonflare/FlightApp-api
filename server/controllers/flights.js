@@ -15,16 +15,8 @@ module.exports = {
 
   list(req, res) {
     return Flight
-      .findAll({
-        include: [{
-          model: Flight,
-          as: 'flights',
-        }],
-        order: [
-          [{ model: Flight, as: 'flights' }, 'ASC'],
-        ],
-      })
-      .then((flights) => res.status(200).send(flights))
-      .catch((error) => res.status(400).send(error));
+      .all()
+      .then( flights => res.status(200).send(flights))
+      .catch( error => res.status(400).send(error));
   },
 };
