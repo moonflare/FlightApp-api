@@ -1,8 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
   const Flight = sequelize.define('Flight', {
     id: {
-      primaryKey: true,
       type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
     },
     date: DataTypes.DATE,
     duration: DataTypes.INTEGER,
