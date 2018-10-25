@@ -10,8 +10,12 @@ module.exports = (sequelize, DataTypes) => {
     dateOfBirth: DataTypes.DATE,
   }, {});
 
-  User.associate = () => {
+  User.associate = (models) => {
     // associations can be defined here
+    User.belongsTo(models.Flight, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE',
+    });
   };
 
   return User;

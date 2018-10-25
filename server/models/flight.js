@@ -11,8 +11,12 @@ module.exports = (sequelize, DataTypes) => {
     to: DataTypes.STRING,
   }, {});
 
-  Flight.associate = () => {
+  Flight.associate = (models) => {
     // associations can be defined here
+    Flight.hasMany(models.User, {
+      foreignKey: 'userId',
+      as: 'users',
+    });
   };
 
   return Flight;
